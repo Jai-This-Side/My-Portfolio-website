@@ -48,9 +48,15 @@ export default function Projects() {
 
               <div className="mt-8">
 
-                <Button>
-                  View Project
-                </Button>
+                <a
+  href={project.github}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <Button>
+    View Project
+  </Button>
+</a>
 
               </div>
 

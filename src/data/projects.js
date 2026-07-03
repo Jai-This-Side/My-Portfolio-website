@@ -25,7 +25,7 @@ const projects = [
       "IAM",
       "SSH",
     ],
-    Medium: "https://jaisinghbisht.medium.com/deploying-a-node-js-application-on-aws-ec2-99aee2bd98b1",
+    github: "https://jaisinghbisht.medium.com/deploying-a-node-js-application-on-aws-ec2-99aee2bd98b1",
   },
 ];
 
