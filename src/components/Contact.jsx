@@ -1,9 +1,42 @@
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+
 import GlassCard from "./ui/GlassCard";
 import SectionHeading from "./ui/SectionHeading";
 import Button from "./ui/Button";
 
 export default function Contact() {
+  const form = useRef();
+
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+    setStatus("");
+
+    emailjs
+      .sendForm(
+        "service_rvv0tpr",
+        "template_54mdv6f",
+        form.current,
+        "Ponyl1vgukM9kTrj7"
+      )
+      .then(() => {
+        setLoading(false);
+        setStatus(" Message transmitted successfully!");
+        form.current.reset();
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false);
+        setStatus(" Failed to send message. Please try again.");
+      });
+  };
+
   return (
     <section
       id="contact"
@@ -18,77 +51,111 @@ export default function Contact() {
 
         <GlassCard>
 
-          <h3 className="text-3xl font-bold mb-4">
-            Let's Build Something Awesome 🚀
+          <h3 className="mb-3 text-3xl font-bold">
+            Let's Connect
           </h3>
 
-          <p className="text-slate-400 leading-8 mb-10">
-            I'm currently looking for internships and entry-level
-            Cloud/DevOps opportunities. Feel free to reach out if you'd
-            like to collaborate or just have a chat.
+          <p className="mb-10 text-slate-400">
+            Interested in collaborating, hiring, or discussing cloud and
+            DevOps? Send me a message and I'll get back to you as soon as
+            possible.
           </p>
 
-          <div className="grid gap-6 md:grid-cols-3">
+          <form
+            ref={form}
+            onSubmit={sendEmail}
+            className="space-y-6"
+          >
+
+            <input
+              type="text"
+              name="from_name"
+              placeholder="Your Name"
+              required
+              className="w-full rounded-xl bg-slate-800 p-4 outline-none transition focus:ring-2 focus:ring-cyan-500"
+            />
+
+            <input
+              type="email"
+              name="from_email"
+              placeholder="Your Email"
+              required
+              className="w-full rounded-xl bg-slate-800 p-4 outline-none transition focus:ring-2 focus:ring-cyan-500"
+            />
+
+            <textarea
+              name="message"
+              rows="6"
+              placeholder="Write your message..."
+              required
+              className="w-full rounded-xl bg-slate-800 p-4 outline-none transition focus:ring-2 focus:ring-cyan-500"
+            />
+
+            <Button type="submit">
+              {loading ? "Transmitting..." : "Transmit Message"}
+            </Button>
+
+          </form>
+
+          {status && (
+            <p className="mt-6 text-cyan-400">
+              {status}
+            </p>
+          )}
+
+          <div className="mt-16 grid gap-6 md:grid-cols-3">
 
             <a
               href="mailto:jaisinghprsnl99@gmail.com"
-              className="rounded-xl bg-slate-800 p-6 hover:bg-slate-700 transition"
+              className="rounded-xl bg-slate-800 p-6 transition hover:bg-slate-700"
             >
-              <FaEnvelope className="text-3xl text-cyan-400 mb-4" />
+              <FaEnvelope className="mb-4 text-3xl text-cyan-400" />
 
               <h4 className="font-bold">
                 Email
               </h4>
 
-              <p className="text-slate-400 text-sm mt-2 break-all">
-                jaisinghprsnl99
-                @gmail.com
+              <p className="mt-2 text-sm text-slate-400">
+                jaisinghprsnl99@gmail.com
               </p>
+
             </a>
 
             <a
               href="https://github.com/Jai-This-Side"
               target="_blank"
-              rel="noreferrer"
-              className="rounded-xl bg-slate-800 p-6 hover:bg-slate-700 transition"
+              rel="noopener noreferrer"
+              className="rounded-xl bg-slate-800 p-6 transition hover:bg-slate-700"
             >
-              <FaGithub className="text-3xl text-cyan-400 mb-4" />
+              <FaGithub className="mb-4 text-3xl text-cyan-400" />
 
               <h4 className="font-bold">
                 GitHub
               </h4>
 
-              <p className="text-slate-400 text-sm mt-2">
-                Jai-This-Side
+              <p className="mt-2 text-sm text-slate-400">
+                github.com/Jai-This-Side
               </p>
+
             </a>
 
             <a
               href="https://www.linkedin.com/in/jai-singh-bisht-b28b29289/"
               target="_blank"
-              rel="noreferrer"
-              className="rounded-xl bg-slate-800 p-6 hover:bg-slate-700 transition"
+              rel="noopener noreferrer"
+              className="rounded-xl bg-slate-800 p-6 transition hover:bg-slate-700"
             >
-              <FaLinkedin className="text-3xl text-cyan-400 mb-4" />
+              <FaLinkedin className="mb-4 text-3xl text-cyan-400" />
 
               <h4 className="font-bold">
                 LinkedIn
               </h4>
 
-              <p className="text-slate-400 text-sm mt-2">
+              <p className="mt-2 text-sm text-slate-400">
                 Connect with me
               </p>
+
             </a>
-
-          </div>
-
-          <div className="mt-12">
-
-            <Button
-              href="mailto:jaisinghprsnl99@gmail.com"
-            >
-              Transmit Message
-            </Button>
 
           </div>
 

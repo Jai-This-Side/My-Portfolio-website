@@ -46,6 +46,7 @@ export default function Button({
 
   return (
     <motion.button
+  type={onClick ? "button" : "submit"}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={onClick}
