@@ -1,7 +1,7 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 
-export default function App() {
+function App() {
   return (
     <>
       <Navbar />
@@ -9,3 +9,5 @@ export default function App() {
     </>
   );
 }
+
+export default App;
