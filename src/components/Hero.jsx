@@ -59,17 +59,21 @@ export default function Hero() {
 
             <div className="mt-10 flex gap-5">
 
-              <Button>
+              <Button
+  onClick={() =>
+    document
+      .getElementById("projects")
+      ?.scrollIntoView({ behavior: "smooth" })
+  }
+>
+  View Projects
+</Button>
 
-                View Projects
-
-              </Button>
-
-              <Button variant="secondary">
-
-                Download Resume
-
-              </Button>
+              <Button
+  href="/JaiSinghBisht_resume.pdf"
+>
+  Download Resume
+</Button>
 
             </div>
 

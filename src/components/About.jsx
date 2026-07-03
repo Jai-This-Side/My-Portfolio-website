@@ -1,46 +1,38 @@
-import skills from "../data/skills";
 import GlassCard from "./ui/GlassCard";
 import SectionHeading from "./ui/SectionHeading";
 
-export default function Skills() {
+export default function About() {
   return (
     <section
-      id="services"
-      className="bg-slate-950 px-8 py-28 text-white"
+      id="identity"
+      className="bg-[#020617] px-8 py-28 text-white"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-6xl">
 
         <SectionHeading
-          title="services.yaml"
-          subtitle="Technical Skills"
+          title="identity.json"
+          subtitle="About"
         />
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <GlassCard>
+          <pre className="overflow-x-auto text-green-400 leading-8">
 
-          {skills.map((skill) => (
-            <GlassCard key={skill.category}>
+{`{
+  "name": "Jai Singh Bisht",
+  "role": "Cloud & DevOps Engineer",
+  "education": "Bachelor of Computer Applications",
+  "focus": [
+    "AWS",
+    "Terraform",
+    "Docker",
+    "Linux",
+    "GitHub Actions"
+  ],
+  "goal": "Become a Cloud Engineer"
+}`}
 
-              <h3 className="mb-6 text-2xl font-bold text-cyan-400">
-                {skill.category}
-              </h3>
-
-              <div className="flex flex-wrap gap-3">
-
-                {skill.items.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full bg-slate-800 px-4 py-2 text-sm"
-                  >
-                    {item}
-                  </span>
-                ))}
-
-              </div>
-
-            </GlassCard>
-          ))}
-
-        </div>
+          </pre>
+        </GlassCard>
 
       </div>
     </section>
