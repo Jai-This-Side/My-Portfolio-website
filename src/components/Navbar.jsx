@@ -1,60 +1,49 @@
-import { useState } from "react";
-import { HiMenu, HiX } from "react-icons/hi";
-
-const navLinks = [
-  "About",
-  "Skills",
-  "Projects",
-  "Journey",
-  "Certificates",
-  "Contact",
-];
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-700">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <h1 className="text-2xl font-bold tracking-wide text-blue-400">
-          Jai.dev
+    <nav className="fixed top-0 z-50 w-full border-b border-white/10 bg-slate-950/70 backdrop-blur-xl">
+
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-8">
+
+        <h1 className="text-2xl font-black tracking-widest text-cyan-400">
+          JAI.DEV
         </h1>
 
-        <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((item) => (
-            <li key={item}>
-              <a
-                href={`#${item.toLowerCase()}`}
-                className="text-slate-300 hover:text-blue-400 transition"
-              >
-                {item}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="hidden gap-8 text-sm uppercase tracking-wider text-slate-300 md:flex">
 
-        <button
-          className="md:hidden text-3xl"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? <HiX /> : <HiMenu />}
-        </button>
+          <a href="#mission">Mission</a>
+
+          <a href="#services">Services</a>
+
+          <a href="#projects">Infrastructure</a>
+
+          <a href="#vault">Vault</a>
+
+          <a href="#contact">Channel</a>
+
+        </div>
+
+        <div className="flex gap-5 text-xl text-white">
+
+          <a
+            href="https://github.com/Jai-This-Side"
+            target="_blank"
+          >
+            <FaGithub />
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/jai-singh-bisht-b28b29289/"
+            target="_blank"
+          >
+            <FaLinkedin />
+          </a>
+
+        </div>
+
       </div>
 
-      {menuOpen && (
-        <div className="md:hidden bg-slate-900 border-t border-slate-700">
-          {navLinks.map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              onClick={() => setMenuOpen(false)}
-              className="block px-6 py-4 text-slate-300 hover:bg-slate-800"
-            >
-              {item}
-            </a>
-          ))}
-        </div>
-      )}
     </nav>
   );
 }

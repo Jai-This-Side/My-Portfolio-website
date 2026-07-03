@@ -1,24 +1,149 @@
+import { motion } from "framer-motion";
+
+import heroImage from "../assets/hero.png";
+
+import AnimatedBackground from "./effects/AnimatedBackground";
+
+import Button from "./ui/Button";
+import GlassCard from "./ui/GlassCard";
+import StatusBadge from "./ui/StatusBadge";
+import TerminalText from "./ui/TerminalText";
+import SocialLinks from "./ui/SocialLinks";
+
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center">
-      <div className="text-center">
-        <p className="text-blue-400 text-lg mb-4">
-          Hi, I'm
-        </p>
+    <section
+      id="mission"
+      className="relative min-h-screen overflow-hidden bg-[#020617] text-white"
+    >
+      <AnimatedBackground />
 
-        <h1 className="text-6xl font-extrabold mb-4">
-          Jai Singh Bisht
-        </h1>
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-8">
 
-        <h2 className="text-2xl text-slate-300 mb-6">
-          Cloud & DevOps Engineer in Progress
-        </h2>
+        <div className="grid w-full gap-16 lg:grid-cols-2">
 
-        <p className="max-w-xl mx-auto text-slate-400 leading-8">
-          Building cloud infrastructure, deploying applications on AWS,
-          and learning modern DevOps technologies one project at a time.
-        </p>
+          {/* LEFT */}
+
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <p className="uppercase tracking-[0.45em] text-cyan-400 text-sm">
+
+              Cloud Operations Center
+
+            </p>
+
+            <h1 className="mt-6 text-6xl font-black leading-tight">
+
+              Jai
+
+              <span className="block text-cyan-400">
+                Singh Bisht
+              </span>
+
+            </h1>
+
+            <TerminalText />
+
+            <p className="mt-8 max-w-xl text-lg leading-8 text-slate-400">
+
+              Building cloud infrastructure,
+              deploying production-ready
+              applications,
+              and automating workflows using
+              AWS, Docker, Linux and Terraform.
+
+            </p>
+
+            <div className="mt-10 flex gap-5">
+
+              <Button>
+
+                View Projects
+
+              </Button>
+
+              <Button variant="secondary">
+
+                Download Resume
+
+              </Button>
+
+            </div>
+
+            <SocialLinks />
+
+          </motion.div>
+
+          {/* RIGHT */}
+
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+
+            <GlassCard>
+
+              <div className="flex justify-center">
+
+                <motion.img
+                  whileHover={{
+                    scale: 1.03,
+                    rotate: 1,
+                  }}
+                  src={heroImage}
+                  alt="Jai Singh Bisht"
+                  className="h-80 w-80 rounded-3xl object-cover border border-cyan-500/30 shadow-2xl shadow-cyan-500/20"
+                />
+
+              </div>
+
+              <div className="mt-10">
+
+                <h3 className="mb-5 text-xl font-bold text-cyan-400">
+
+                  SYSTEM STATUS
+
+                </h3>
+
+                <StatusBadge
+                  title="AWS"
+                  status="ONLINE"
+                />
+
+                <StatusBadge
+                  title="Docker"
+                  status="ACTIVE"
+                />
+
+                <StatusBadge
+                  title="Terraform"
+                  status="READY"
+                />
+
+                <StatusBadge
+                  title="GitHub"
+                  status="CONNECTED"
+                />
+
+                <StatusBadge
+                  title="Mission"
+                  status="Kubernetes"
+                />
+
+              </div>
+
+            </GlassCard>
+
+          </motion.div>
+
+        </div>
+
       </div>
+
     </section>
   );
 }
