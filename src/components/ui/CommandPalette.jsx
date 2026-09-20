@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useHotkeys } from "react-hotkeys-hook";
 
@@ -55,20 +55,26 @@ export default function CommandPalette() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
 
+  const openPalette = () => {
+    setQuery("");
+    setOpen(true);
+  };
+
+  const closePalette = () => {
+    setQuery("");
+    setOpen(false);
+  };
+
   useHotkeys("ctrl+k", (e) => {
     e.preventDefault();
-    setOpen(true);
+    openPalette();
   });
 
-  useHotkeys("esc", () => setOpen(false));
+  useHotkeys("esc", closePalette);
 
   const filtered = COMMANDS.filter((item) =>
     item.command.toLowerCase().includes(query.toLowerCase())
   );
-
-  useEffect(() => {
-    if (!open) setQuery("");
-  }, [open]);
 
   return (
     <AnimatePresence>
@@ -107,7 +113,7 @@ export default function CommandPalette() {
                 key={item.command}
                 onClick={() => {
                   item.action();
-                  setOpen(false);
+                  closePalette();
                 }}
                 className="flex w-full justify-between p-5 hover:bg-slate-800 transition"
               >
