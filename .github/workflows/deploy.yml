@@ -29,3 +29,23 @@ jobs:
       - name: Build Application
         run: npm run build
 
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/portfolio.pem
+          chmod 600 ~/.ssh/portfolio.pem
+          ssh-keyscan -H "${{ secrets.EC2_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Deploy to EC2
+        run: |
+          ssh -i ~/.ssh/portfolio.pem ubuntu@${{ secrets.EC2_HOST }} \
+            "rm -rf /var/www/portfolio/*"
+
+          scp -i ~/.ssh/portfolio.pem -r dist/* \
+            ubuntu@${{ secrets.EC2_HOST }}:/var/www/portfolio/
+
+      - name: Verify Deployment
+        run: |
+          ssh -i ~/.ssh/portfolio.pem ubuntu@${{ secrets.EC2_HOST }} \
+            "ls -la /var/www/portfolio"
+
