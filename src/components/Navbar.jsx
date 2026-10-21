@@ -1,63 +1,24 @@
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import React from 'react';
 
-export default function Navbar() {
+const Navbar = () => {
   return (
-    <nav className="fixed top-0 z-50 w-full border-b border-white/10 bg-slate-950/70 backdrop-blur-xl">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-8">
-
-        <h1 className="text-2xl font-black tracking-widest text-cyan-400">
-          JAI.DEV
-        </h1>
-
-        <div className="hidden md:flex gap-8 text-sm uppercase tracking-wider text-slate-300">
-
-          <a href="#mission" className="hover:text-cyan-400 transition">
-            Home
-          </a>
-
-          <a href="#identity" className="hover:text-cyan-400 transition">
-            About
-          </a>
-
-          <a href="#services" className="hover:text-cyan-400 transition">
-            Skills
-          </a>
-
-          <a href="#projects" className="hover:text-cyan-400 transition">
-            Projects
-          </a>
-
-          <a href="#vault" className="hover:text-cyan-400 transition">
-            Certificates
-          </a>
-
-          <a href="#contact" className="hover:text-cyan-400 transition">
-            Contact
-          </a>
-
-        </div>
-
-        <div className="flex gap-5 text-xl text-white">
-
-          <a
-            href="https://github.com/Jai-This-Side"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaGithub />
-          </a>
-
-          <a
-            href="https://www.linkedin.com/in/jai-singh-bisht-b28b29289/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaLinkedin />
-          </a>
-
-        </div>
-
+    <header className="navbar">
+      <div className="container nav-container">
+        <a href="#home" className="logo">JSB.</a>
+        
+        <ul className="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Expertise</a></li>
+          <li><a href="#projects">Work</a></li>
+          <li>
+            <a href="#contact" className="btn-primary hard-shadow" style={{ padding: '0.5rem 1rem' }}>
+              Contact
+            </a>
+          </li>
+        </ul>
       </div>
-    </nav>
+    </header>
   );
-}
+};
+
+export default Navbar;

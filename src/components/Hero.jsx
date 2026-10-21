@@ -1,127 +1,72 @@
-import { motion } from "framer-motion";
+import React from 'react';
 
-import heroImage from "../assets/hero.png";
-
-import AnimatedBackground from "./effects/AnimatedBackground";
-
-import Button from "./ui/Button";
-import GlassCard from "./ui/GlassCard";
-import StatusBadge from "./ui/StatusBadge";
-import TerminalText from "./ui/TerminalText";
-import SocialLinks from "./ui/SocialLinks";
-
-export default function Hero() {
+const Hero = () => {
   return (
-    <section
-      id="mission"
-      className="relative overflow-hidden bg-[#020617] text-white"
-    >
-      <AnimatedBackground />
-
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-8 pt-28 md:pt-0">
-
-        <div className="grid w-full gap-16 lg:grid-cols-2">
-
-          {/* LEFT */}
-
-          <motion.div
-            initial={{ opacity: 0, x: -60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <p className="text-sm uppercase tracking-[0.45em] text-cyan-400">
-              Cloud Operations Center
-            </p>
-
-            <h1 className="mt-6 text-6xl font-black leading-tight">
-              Jai
-
-              <span className="block text-cyan-400">
-                Singh Bisht
-              </span>
-            </h1>
-
-            <TerminalText />
-
-            <p className="mt-8 max-w-xl text-lg leading-8 text-slate-400">
-              Building cloud infrastructure,
-              deploying production-ready
-              applications,
-              and automating workflows using
-              AWS, Docker, Linux and Terraform.
-            </p>
-
-            <div className="mt-10 flex gap-5">
-
-              <Button
-                onClick={() =>
-                  document
-                    .getElementById("projects")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-              >
-                View Projects
-              </Button>
-
-              <Button
-                href="/JaiSinghBisht_resume.pdf"
-                download
-              >
-                Download Resume
-              </Button>
-
-            </div>
-
-            <SocialLinks />
-
-          </motion.div>
-
-          {/* RIGHT */}
-
-          <motion.div
-            initial={{ opacity: 0, x: 60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-
-            <GlassCard>
-
-              <div className="flex justify-center">
-
-                <motion.img
-                  whileHover={{
-                    scale: 1.03,
-                    rotate: 1,
-                  }}
-                  src={heroImage}
-                  alt="Jai Singh Bisht"
-                  className="h-80 w-80 rounded-3xl border border-cyan-500/30 object-cover shadow-2xl shadow-cyan-500/20"
-                />
-
-              </div>
-
-              <div className="mt-10">
-
-                <h3 className="mb-5 text-xl font-bold text-cyan-400">
-                  SYSTEM STATUS
-                </h3>
-
-                <StatusBadge title="AWS" status="ONLINE" />
-                <StatusBadge title="Docker" status="ACTIVE" />
-                <StatusBadge title="Terraform" status="READY" />
-                <StatusBadge title="GitHub" status="CONNECTED" />
-                <StatusBadge title="Mission" status="Kubernetes" />
-
-              </div>
-
-            </GlassCard>
-
-          </motion.div>
-
+    <section className="hero-section" id="hero">
+      <div className="container">
+        <div className="hero-editorial-header">
+          <span className="issue-tag">PORTFOLIO // EDITION 2026</span>
+          <span className="issue-tag">JIIT // NOIDA, IN</span>
+          <span className="issue-tag text-accent">● OPEN FOR DEVOPS / SRE / PLATFORM ROLES</span>
         </div>
 
-      </div>
+        <div className="hero-grid">
+          <div className="hero-content">
+            <h1 className="hero-title">
+              Jai Singh <br />
+              <span className="text-accent">Bisht.</span>
+            </h1>
+            <p className="hero-subtitle">
+              DevOps, Platform & Site Reliability Engineering professional. Specialized in cloud-native infrastructure, CI/CD automation, containerization, and production system reliability.
+            </p>
 
+            <div className="hero-buttons">
+              <a
+                href="/JaiSinghBisht_resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary hard-shadow"
+              >
+                Download Resume (PDF) ↗
+              </a>
+              <a href="#projects" className="btn-secondary hard-shadow">
+                Explore Work
+              </a>
+            </div>
+
+            <div className="hero-metrics">
+              <div className="metric-item">
+                <span className="metric-num">BCA</span>
+                <span className="metric-label">JIIT Graduate (2026)</span>
+              </div>
+              <div className="metric-item">
+                <span className="metric-num">SRE</span>
+                <span className="metric-label">Infrastructure & Reliability</span>
+              </div>
+              <div className="metric-item">
+                <span className="metric-num">99.9%</span>
+                <span className="metric-label">Uptime Mindset</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="hero-Portrait-wrapper">
+            <div className="portrait-frame border-emerald hard-shadow">
+              <img
+                src="/profile.jpeg"
+                alt="Jai Singh Bisht"
+                className="hero-image"
+              />
+              <div className="portrait-caption">
+                <span>FIG 01. JAI SINGH BISHT</span>
+                <span>BCA // JIIT</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
-}
+};
+
+export default Hero;

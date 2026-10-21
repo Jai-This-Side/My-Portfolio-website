@@ -1,17 +1,14 @@
-export default function Footer() {
+import React from 'react';
+
+const Footer = () => {
   return (
-    <footer className="border-t border-slate-800 bg-slate-950 py-10">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-8 md:flex-row">
-
-        <h2 className="text-2xl font-black tracking-widest text-cyan-400">
-          JAI.DEV
-        </h2>
-
-        <p className="text-center text-sm text-slate-500">
-          © {new Date().getFullYear()}
-        </p>
-
+    <footer style={{ padding: '3rem 0', backgroundColor: 'var(--surface-ivory)' }}>
+      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 700 }}>
+        <span>© {new Date().getFullYear()} JAI SINGH BISHT. ALL RIGHTS RESERVED.</span>
+        <a href="#hero" className="card-link text-accent">BACK TO TOP ↑</a>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

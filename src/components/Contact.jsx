@@ -1,167 +1,80 @@
-import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
-import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
-import GlassCard from "./ui/GlassCard";
-import SectionHeading from "./ui/SectionHeading";
-import Button from "./ui/Button";
+const Contact = () => {
+  const formRef = useRef();
+  const [status, setStatus] = useState('');
 
-export default function Contact() {
-  const form = useRef();
-
-  const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState("");
-
-  const sendEmail = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    setLoading(true);
-    setStatus("");
+    setStatus('SENDING...');
 
     emailjs
       .sendForm(
-        "service_rvv0tpr",
-        "template_54mdv6f",
-        form.current,
-        "Ponyl1vgukM9kTrj7"
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_id',
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_id',
+        formRef.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'public_key'
       )
       .then(() => {
-        setLoading(false);
-        setStatus(" Message transmitted successfully!");
-        form.current.reset();
+        setStatus('TRANSMISSION COMPLETE.');
+        formRef.current.reset();
       })
-      .catch((error) => {
-        console.error(error);
-        setLoading(false);
-        setStatus(" Failed to send message. Please try again.");
+      .catch(() => {
+        setStatus('ERROR: USE DIRECT EMAIL.');
       });
   };
 
   return (
-    <section
-      id="contact"
-      className="bg-[#020617] py-28 px-8 text-white"
-    >
-      <div className="mx-auto max-w-6xl">
+    <section className="section" id="contact">
+      <div className="container">
+        <div className="section-header-row">
+          <div>
+            <span className="section-index">06 // DISPATCH</span>
+            <h2 className="section-title">Initiate Contact</h2>
+          </div>
+        </div>
 
-        <SectionHeading
-          title="secure-channel()"
-          subtitle="Contact"
-        />
-
-        <GlassCard>
-
-          <h3 className="mb-3 text-3xl font-bold">
-            Let's Connect
-          </h3>
-
-          <p className="mb-10 text-slate-400">
-            Interested in collaborating, hiring, or discussing cloud and
-            DevOps? Send me a message and I'll get back to you as soon as
-            possible.
-          </p>
-
-          <form
-            ref={form}
-            onSubmit={sendEmail}
-            className="space-y-6"
-          >
-
-            <input
-              type="text"
-              name="from_name"
-              placeholder="Your Name"
-              required
-              className="w-full rounded-xl bg-slate-800 p-4 outline-none transition focus:ring-2 focus:ring-cyan-500"
-            />
-
-            <input
-              type="email"
-              name="from_email"
-              placeholder="Your Email"
-              required
-              className="w-full rounded-xl bg-slate-800 p-4 outline-none transition focus:ring-2 focus:ring-cyan-500"
-            />
-
-            <textarea
-              name="message"
-              rows="6"
-              placeholder="Write your message..."
-              required
-              className="w-full rounded-xl bg-slate-800 p-4 outline-none transition focus:ring-2 focus:ring-cyan-500"
-            />
-
-            <Button type="submit">
-              {loading ? "Transmitting..." : "Transmit Message"}
-            </Button>
-
-          </form>
-
-          {status && (
-            <p className="mt-6 text-cyan-400">
-              {status}
+        <div className="contact-grid">
+          <div>
+            <h3 style={{ fontSize: '2rem', marginBottom: '1rem' }}>
+              Available for DevOps, Platform & SRE roles.
+            </h3>
+            <p style={{ marginBottom: '2rem' }}>
+              Looking for an engineer who understands Linux systems, CI/CD automation, and production reliability? Reach out directly.
             </p>
-          )}
 
-          <div className="mt-16 grid gap-6 md:grid-cols-3">
-
-            <a
-              href="mailto:jaisinghprsnl99@gmail.com"
-              className="rounded-xl bg-slate-800 p-6 transition hover:bg-slate-700"
-            >
-              <FaEnvelope className="mb-4 text-3xl text-cyan-400" />
-
-              <h4 className="font-bold">
-                Email
-              </h4>
-
-              <p className="mt-2 text-sm text-slate-400">
-                jaisinghprsnl99@gmail.com
-              </p>
-
-            </a>
-
-            <a
-              href="https://github.com/Jai-This-Side"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-xl bg-slate-800 p-6 transition hover:bg-slate-700"
-            >
-              <FaGithub className="mb-4 text-3xl text-cyan-400" />
-
-              <h4 className="font-bold">
-                GitHub
-              </h4>
-
-              <p className="mt-2 text-sm text-slate-400">
-                github.com/Jai-This-Side
-              </p>
-
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/jai-singh-bisht-b28b29289/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-xl bg-slate-800 p-6 transition hover:bg-slate-700"
-            >
-              <FaLinkedin className="mb-4 text-3xl text-cyan-400" />
-
-              <h4 className="font-bold">
-                LinkedIn
-              </h4>
-
-              <p className="mt-2 text-sm text-slate-400">
-                Connect with me
-              </p>
-
-            </a>
-
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <div><strong>DIRECT EMAIL:</strong> jaisinghbisht05@gmail.com</div>
+              <div><strong>PHONE:</strong> <a href="tel:+91 8287816248" className="text-accent">+91 8126135835 ↗</a></div>
+              <div><strong>INSTITUTION:</strong> JIIT Noida (BCA Graduate, Sept 2026)</div>
+              <div><strong>GITHUB:</strong> <a href="https://github.com/Jai-This-Side" target="_blank" rel="noreferrer" className="text-accent">github.com/Jai-This-Side ↗</a></div>
+              <div><strong>LINKEDIN:</strong> <a href="https://www.linkedin.com/in/jai-singh-bisht-b28b29289/" target="_blank" rel="noreferrer" className="text-accent">linkedin.com/in/jai-singh-bisht-b28b29289/ ↗</a></div>
+              <div><strong>MEDIUM:</strong> <a href="https://medium.com/@jaisinghbisht" target="_blank" rel="noreferrer" className="text-accent">medium.com/@jaisinghbisht ↗</a></div>
+            </div>
           </div>
 
-        </GlassCard>
-
+          <form ref={formRef} onSubmit={handleSubmit} className="skill-box border-emerald hard-shadow">
+            <div className="form-group">
+              <label className="form-label">Your Name</label>
+              <input type="text" name="user_name" required className="form-input" placeholder="e.g. Rohan Sharma" />
+            </div>
+            <div className="form-group">
+              <label className="form-label">Email Address</label>
+              <input type="email" name="user_email" required className="form-input" placeholder="name@company.com" />
+            </div>
+            <div className="form-group">
+              <label className="form-label">Role / Inquiry Details</label>
+              <textarea name="message" rows="4" required className="form-textarea" placeholder="Tell me about the DevOps / SRE / Platform role..." />
+            </div>
+            <button type="submit" className="btn-primary hard-shadow" style={{ width: '100%', justifyContent: 'center' }}>
+              {status || 'Send Message ↗'}
+            </button>
+          </form>
+        </div>
       </div>
     </section>
   );
-}
+};
+
+export default Contact;

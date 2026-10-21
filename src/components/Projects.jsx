@@ -1,71 +1,82 @@
-import projects from "../data/projects";
-import GlassCard from "./ui/GlassCard";
-import SectionHeading from "./ui/SectionHeading";
-import Button from "./ui/Button";
+import React from 'react';
+import * as projectData from '../data/projects';
 
-export default function Projects() {
+const Projects = () => {
+  const projectList = projectData.projects || projectData.default || [];
+
   return (
-    <section
-      id="projects"
-      className="bg-[#020617] py-28 px-8 text-white"
-    >
-      <div className="mx-auto max-w-7xl">
-
-        <SectionHeading
-          title="infrastructure.tf"
-          subtitle="Projects"
-        />
-
-        <div className="space-y-10">
-
-          {projects.map((project) => (
-            <GlassCard key={project.title}>
-
-              <p className="text-cyan-400 font-mono mb-3">
-                {project.file}
-              </p>
-
-              <h3 className="text-3xl font-bold mb-5">
-                {project.title}
-              </h3>
-
-              <p className="text-slate-400 leading-8">
-                {project.description}
-              </p>
-
-              <div className="mt-6 flex flex-wrap gap-3">
-
-                {project.tech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-full bg-slate-800 px-4 py-2 text-sm"
-                  >
-                    {tech}
-                  </span>
-                ))}
-
-              </div>
-
-              <div className="mt-8">
-
-                <a
-  href={project.github}
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <Button>
-    View Project
-  </Button>
-</a>
-
-              </div>
-
-            </GlassCard>
-          ))}
-
+    <section className="section" id="projects">
+      <div className="container">
+        <div className="section-header-row">
+          <div>
+            <span className="section-index">03 // ARCHIVE</span>
+            <h2 className="section-title">Infrastructure & Builds</h2>
+          </div>
         </div>
 
+        <div className="project-grid">
+          {projectList.map((proj, index) => {
+            const isMedium = proj.github?.includes('medium.com');
+            return (
+              <article key={proj.id || index} className="brutal-card border-emerald hard-shadow">
+                <div className="card-header">
+                  <div className="card-meta">
+                    <span>{proj.file ? `FILE // ${proj.file}` : `SYSTEM // 0${index + 1}`}</span>
+                    <span className="text-accent">[{proj.status || 'PRODUCTION'}]</span>
+                  </div>
+                  <h3>{proj.title}</h3>
+                </div>
+
+                <div className="card-body">
+                  <div>
+                    <p style={{ fontWeight: 500 }}>{proj.description}</p>
+                    {Array.isArray(proj.features) && (
+                      <ul className="feature-list">
+                        {proj.features.map((feat, idx) => (
+                          <li key={idx}>{feat}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+
+                  <div className="tags">
+                    {(proj.tech || proj.tags || []).map((item, i) => (
+                      <span key={i} className="tag border-emerald">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="card-footer">
+                  {proj.github && proj.github !== '#' && (
+                    <a
+                      href={proj.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="card-link"
+                    >
+                      {isMedium ? 'Read Technical Guide (Medium) ↗' : 'Repository & Pipeline ↗'}
+                    </a>
+                  )}
+                  {(proj.live || proj.demo) && (
+                    <a
+                      href={proj.live || proj.demo}
+                      target={proj.live?.startsWith('#') ? '_self' : '_blank'}
+                      rel="noopener noreferrer"
+                      className="card-link text-accent"
+                    >
+                      Live Deployment ↗
+                    </a>
+                  )}
+                </div>
+              </article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
-}
+};
+
+export default Projects;

@@ -1,51 +1,38 @@
-import certificates from "../data/certificates";
-import GlassCard from "./ui/GlassCard";
-import SectionHeading from "./ui/SectionHeading";
+import React from 'react';
+import * as certData from '../data/certificates';
 
-export default function Certificates() {
+const Certificates = () => {
+  const certList = certData.certificates || certData.default || [];
+
   return (
-    <section
-      id="vault"
-      className="bg-slate-950 px-8 py-28 text-white"
-    >
-      <div className="mx-auto max-w-7xl">
-
-        <SectionHeading
-          title="credential-vault/"
-          subtitle="Certificates"
-        />
-
-        <div className="grid gap-8 md:grid-cols-2">
-
-          {certificates.map((cert) => (
-            <GlassCard key={cert.title}>
-
-              <a
-  href={cert.image}
-  target="_blank"
-  rel="noreferrer"
->
-  <img
-    src={cert.image}
-    alt={cert.title}
-    className="rounded-xl mb-6 w-full object-cover transition duration-300 hover:scale-[1.02]"
-  />
-</a>
-
-              <h3 className="text-2xl font-bold">
-                {cert.title}
-              </h3>
-
-              <p className="mt-2 text-slate-400">
-                {cert.issuer}
-              </p>
-
-            </GlassCard>
-          ))}
-
+    <section className="section" id="certificates">
+      <div className="container">
+        <div className="section-header-row">
+          <div>
+            <span className="section-index">05 // CREDENTIALS</span>
+            <h2 className="section-title">Verified Certifications</h2>
+          </div>
         </div>
 
+        <div className="cert-grid">
+          {Array.isArray(certList) && certList.map((cert, idx) => (
+            <div key={cert.id || idx} className="cert-card border-emerald hard-shadow">
+              {cert.image && (
+                <div className="cert-img-wrapper">
+                  <img src={cert.image} alt={cert.title} className="cert-img" />
+                </div>
+              )}
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 700 }} className="text-accent">
+                {cert.issuer} {cert.date ? `// ${cert.date}` : ''}
+              </span>
+              <h3 style={{ fontSize: '1.25rem', margin: '0.4rem 0' }}>{cert.title}</h3>
+              <p style={{ fontSize: '0.9rem' }}>{cert.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
-}
+};
+
+export default Certificates;

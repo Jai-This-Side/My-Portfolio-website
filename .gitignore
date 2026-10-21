@@ -24,7 +24,17 @@ dist-ssr
 *.sw?
 
 # Terraform
-terraform/.terraform/
-terraform/terraform.tfstate
-terraform/terraform.tfstate.*
-terraform/terraform.tfvars
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Keep provider lock files tracked for reproducible builds
+!.terraform.lock.hcl

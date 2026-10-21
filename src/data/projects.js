@@ -1,32 +1,118 @@
-const projects = [
+export const projects = [
   {
+    id: "jalos",
+    title: "JalOS — AI-Powered Predictive Water Management",
+    file: "terraform/main.tf",
+    status: "HACKATHON // AWS",
+    description:
+      "A comprehensive, production-grade prototype water-management platform engineered for residential societies. It unifies real-time tank telemetry, household usage guidance, ridge-regression demand forecasting, tanker scheduling, and automated anomaly flagging.",
+    features: [
+      "Keyless production deployment pipeline utilizing GitHub Actions and AWS IAM OIDC federation to push artifacts securely without long-lived credentials.",
+      "Automated provisioning and zero-touch remote configuration of Ubuntu EC2 instances via AWS Systems Manager (SSM) with container lifecycle orchestration behind an Nginx reverse proxy.",
+      "Secure runtime configuration management leveraging AWS Systems Manager Parameter Store SecureStrings for encrypted production environment variables.",
+      "FastAPI backend engine integrated with seasonal ridge-regression forecasting artifacts, asynchronous WebSocket live telemetry streams, a Flutter mobile app, and a React operations portal.",
+    ],
+    tech: [
+      "AWS EC2 & S3",
+      "GitHub Actions (OIDC)",
+      "AWS SSM & Secrets",
+      "Docker & Nginx",
+      "Terraform (IaC)",
+      "FastAPI & Python",
+      "React & Flutter",
+    ],
+    github: "https://github.com/Jai-This-Side",
+    live: "http://13.206.102.148",
+  },
+  {
+    id: "code2kt",
+    title: "Code2KT — Cloud-Deployed Static Analysis & KT Engine",
+    file: ".github/workflows/deploy.yml",
+    status: "PRODUCTION // AWS",
+    description:
+      "An advanced developer automation platform hosted on AWS EC2 inside Docker containers behind an Nginx reverse proxy. Translates complex, unfamiliar software repositories into clean, structured Knowledge Transfer documentation using deterministic AST analysis and multi-provider AI fallback chains.",
+    features: [
+      "Keyless CI/CD pipeline integrated with GitHub Actions and AWS IAM OIDC authentication to execute automated pytest suites, build optimized Docker images, and push immutable artifacts to Amazon ECR.",
+      "Zero-touch remote deployment workflow targeting Ubuntu 24.04 EC2 targets via AWS Systems Manager (SSM) paired with automated container replacement and health-check loops.",
+      "Secure runtime credential injection via AWS Secrets Manager (us-west-2) alongside custom Nginx reverse-proxy tuning (400M max body limits, 300s timeouts) to handle massive repository zip archives.",
+      "Deterministic Abstract Syntax Tree (AST) code analyzer combined with an intelligent AI fallback chain (Gemini ➔ Groq ➔ OpenRouter) to guarantee uninterrupted documentation generation.",
+    ],
+    tech: [
+      "AWS EC2 & ECR",
+      "GitHub Actions (OIDC)",
+      "AWS SSM & Secrets Manager",
+      "Docker",
+      "Nginx",
+      "Terraform",
+      "FastAPI",
+      "Linux",
+    ],
+    github: "https://github.com/Jai-This-Side/Code2KT",
+  },
+  {
+    id: "jai-portfolio",
+    title: "DevOps Portfolio — Automated Build & Edge Delivery",
+    file: "vite.config.js",
+    status: "LIVE // CI/CD",
+    description:
+      "A high-performance, minimalist web application engineered around a clean brutalist-editorial design system. Built with Vite 8 (Rolldown) and React 19 for sub-second build outputs, strict static analysis quality gates, and automated deployment.",
+    features: [
+      "Continuous integration and deployment workflow triggered automatically upon repository pushes, executing ESLint static validation and production asset verification.",
+      "Leverages Vite 8 and the Rust-powered Rolldown bundler for lightning-fast compilation, deterministic chunk asset hashing, and optimized client caching.",
+      "Decoupled client-side dispatch architecture utilizing secure environment variable injection (VITE_EMAILJS_*) to manage forms cleanly without leaking source-control secrets.",
+    ],
+    tech: [
+      "CI/CD Automation",
+      "Vite 8 (Rolldown)",
+      "Docker / Nginx Ready",
+      "ESLint Gates",
+      "React 19",
+      "Git Workflows",
+    ],
+    github: "https://github.com/Jai-This-Side",
+    live: "#hero",
+  },
+  {
+    id: "terraform-ec2",
     title: "Infrastructure as Code with Terraform",
     file: "terraform_ec2.tf",
+    status: "IaC // AWS",
     description:
-      "Provisioned AWS EC2 infrastructure using Terraform with Apache installed through user data. Configured Security Groups and automated deployment using Infrastructure as Code principles.",
+      "Declarative cloud provisioning configuration utilizing HashiCorp Terraform to automate complete AWS infrastructure lifecycles, network security rules, and server bootstrapping without manual console intervention.",
+    features: [
+      "Expressed reproducible AWS EC2 infrastructure within HashiCorp Configuration Language (HCL) with automated state tracking and idempotent resource deployment.",
+      "Automated server provisioning and Apache HTTP daemon initialization during instance boot sequences via custom shell scripts executed through EC2 user_data.",
+      "Engineered granular AWS Security Group rules enforcing strict least-privilege access for HTTP traffic (port 80) and administrative SSH sessions (port 22).",
+    ],
     tech: [
       "Terraform",
       "AWS",
       "EC2",
       "Apache",
       "Security Groups",
+      "Bash (user_data)",
     ],
-    github: "#",
+    github: "https://github.com/Jai-This-Side",
   },
   {
-    title: "Node.js Application on AWS EC2",
+    id: "nodejs-aws-ec2",
+    title: "Node.js Application Deployment on AWS EC2",
     file: "deploy_node_ec2.sh",
+    status: "DEPLOYED // CLOUD",
     description:
-      "Deployed a Node.js application on Ubuntu EC2 with secure SSH access, IAM configuration, environment variables, and public deployment.",
+      "An end-to-end production deployment blueprint for hosting Node.js backend services on remote Ubuntu AWS instances, focusing on server hardening, IAM role boundaries, and public exposure management.",
+    features: [
+      "Provisioned and configured a secure Ubuntu Linux EC2 server environment featuring SSH key-pair authentication and isolated IAM instance profiles.",
+      "Established production runtime environment variables, background process supervision, and firewall configurations to securely route public traffic to the application tier.",
+      "Authored a comprehensive technical reference and deployment guide published on Medium detailing the complete cloud setup process.",
+    ],
     tech: [
       "Node.js",
       "AWS EC2",
-      "Linux",
+      "Linux (Ubuntu)",
       "IAM",
       "SSH",
     ],
     github: "https://jaisinghbisht.medium.com/deploying-a-node-js-application-on-aws-ec2-99aee2bd98b1",
   },
 ];
-
-export default projects;

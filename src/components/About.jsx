@@ -1,40 +1,63 @@
-import GlassCard from "./ui/GlassCard";
-import SectionHeading from "./ui/SectionHeading";
+import React from 'react';
 
-export default function About() {
+const About = () => {
   return (
-    <section
-      id="identity"
-      className="bg-[#020617] px-8 py-28 text-white"
-    >
-      <div className="mx-auto max-w-6xl">
+    <section className="section" id="about">
+      <div className="container">
+        <div className="section-header-row">
+          <div>
+            <span className="section-index">01 // BIOGRAPHY</span>
+            <h2 className="section-title">Background & Ethos</h2>
+          </div>
+        </div>
 
-        <SectionHeading
-          title="identity.json"
-          subtitle="About"
-        />
+        <div className="about-grid">
+          <div className="about-text">
+            <p className="about-lead">
+              I engineer reliable infrastructure, automated delivery pipelines, and resilient production systems.
+            </p>
+            <p>
+              I am a 21-year-old Computer Applications graduate (BCA) from Jaypee Institute of Information Technology (JIIT), having completed my degree from July 2023 to September 2026. My core expertise is dedicated entirely to DevOps, Platform Engineering, and Site Reliability Engineering (SRE).
+            </p>
+            <p>
+              My work centers on how systems behave under load—focusing on Linux systems administration, container orchestration with Docker, CI/CD pipeline automation, infrastructure provisioning, and robust system observability.
+            </p>
+          </div>
 
-        <GlassCard>
-          <pre className="overflow-x-auto text-green-400 leading-8">
-
-{`{
-  "name": "Jai Singh Bisht",
-  "role": "Cloud & DevOps Engineer",
-  "education": "Bachelor of Computer Applications",
-  "focus": [
-    "AWS",
-    "Terraform",
-    "Docker",
-    "Linux",
-    "GitHub Actions"
-  ],
-  "goal": "Become a Cloud Engineer"
-}`}
-
-          </pre>
-        </GlassCard>
-
+          <div>
+            <table className="spec-table hard-shadow">
+              <tbody>
+                <tr>
+                  <th>Name</th>
+                  <td>Jai Singh Bisht</td>
+                </tr>
+                <tr>
+                  <th>Age</th>
+                  <td>21 Years</td>
+                </tr>
+                <tr>
+                  <th>Degree</th>
+                  <td>Bachelor of Computer Applications (BCA)</td>
+                </tr>
+                <tr>
+                  <th>Timeline</th>
+                  <td>July 2023 – September 2026</td>
+                </tr>
+                <tr>
+                  <th>Institution</th>
+                  <td>Jaypee Institute of Information Technology (JIIT)</td>
+                </tr>
+                <tr>
+                  <th>Target Roles</th>
+                  <td>DevOps Engineer / Platform / SRE</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </section>
   );
-}
+};
+
+export default About;
