@@ -1,4 +1,3 @@
-import React from 'react';
 import * as projectData from '../data/projects';
 
 const Projects = () => {

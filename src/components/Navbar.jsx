@@ -1,10 +1,8 @@
-import React from 'react';
-
 const Navbar = () => {
   return (
     <header className="navbar">
       <div className="container nav-container">
-        <a href="#home" className="logo">JSB.</a>
+        <a href="#hero" className="logo">JSB.</a>
         
         <ul className="nav-links">
           <li><a href="#about">About</a></li>

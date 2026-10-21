@@ -1,4 +1,3 @@
-import React from 'react';
 import * as certData from '../data/certificates';
 
 const Certificates = () => {

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
@@ -46,7 +46,7 @@ const Contact = () => {
 
             <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <div><strong>DIRECT EMAIL:</strong> jaisinghbisht05@gmail.com</div>
-              <div><strong>PHONE:</strong> <a href="tel:+91 8287816248" className="text-accent">+91 8126135835 ↗</a></div>
+              <div><strong>PHONE:</strong> <a href="tel:+918126135835" className="text-accent">+91 8126135835 ↗</a></div>
               <div><strong>INSTITUTION:</strong> JIIT Noida (BCA Graduate, Sept 2026)</div>
               <div><strong>GITHUB:</strong> <a href="https://github.com/Jai-This-Side" target="_blank" rel="noreferrer" className="text-accent">github.com/Jai-This-Side ↗</a></div>
               <div><strong>LINKEDIN:</strong> <a href="https://www.linkedin.com/in/jai-singh-bisht-b28b29289/" target="_blank" rel="noreferrer" className="text-accent">linkedin.com/in/jai-singh-bisht-b28b29289/ ↗</a></div>
